@@ -22,6 +22,22 @@ class UserController {
 			nnext(err)
 		}
 	}
+
+    static async login(req, res, next) {
+        const { email, password } = req.body
+
+        try {
+            const user = await UserService.Login(email, password)
+
+            if(user) {
+                res.status(200).send(user)
+            } else {
+                res.status(404).send({ error: 'Erro ao efetuar o login, favor tentar novamente!!' })
+            }
+        } catch(err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = UserController

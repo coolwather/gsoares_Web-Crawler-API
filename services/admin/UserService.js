@@ -25,6 +25,25 @@ class UserService {
 
         return userToReturn
     }
+
+    static async Login(email, password) {
+        const user = await User.findOne({ where: { email }})
+
+        if(user) {
+            if(user.validatePassword(password)) {
+                const token = user.generateToken()
+
+                return {
+                    token,
+                    user: user.getUser()
+                }
+            } else {
+                return null
+            }
+        } else {
+            return null
+        }
+    }
 }
 
 module.exports = UserService

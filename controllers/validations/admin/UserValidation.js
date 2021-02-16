@@ -13,11 +13,30 @@ const UserValidation = {
             email: Joi.string().required().email().error(err => {
                 switch(err[0].type) {
                     case 'any.required':
-                        return 'O e-mail é obriigatório'
+                        return 'O e-mail é obrigatório'
                     case 'string.email':
                         return 'Favor preencher um e-mail válido'
                     default:
                         return 'O e-mail é obrigatório'
+                }
+            }),
+            password: Joi.string().required().error(err => {
+                return {
+                    message: 'A senha é obrigatória'
+                }
+            })
+        }
+    },
+    login: {
+        body: {
+            email: Joi.string().required().email().error(err => {
+                switch(err[0].type) {
+                    case 'any.required':
+                        return 'O e-mail é obrigatório'
+                    case 'string.email':
+                        return 'Favor preencher um e-mail válido'
+                    default:
+                        return 'O e-mil é obrigatório'
                 }
             }),
             password: Joi.string().required().error(err => {
