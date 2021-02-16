@@ -16,7 +16,7 @@ function verifyJwt(req, res, next) {
 				.json({ auth: false, message: 'Failed to authenticate token.' })
 		}
 
-		req.userId = decoded.userId
+		req.userId = decoded.id
 		next()
 	})
 }

@@ -38,6 +38,19 @@ class UserController {
             next(err)
         }
     }
+
+    static async updateUser(req, res, next) {
+        const { email, name } = req.body
+        const userId = req.userId
+
+        try {
+            const updatedUser = await UserService.UpdateUser(userId, name, email)
+
+            return res.status(200).json(updatedUser)
+        } catch(err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = UserController

@@ -45,7 +45,26 @@ const UserValidation = {
                 }
             })
         }
-    }
+    },
+    updateUser: {
+        body: {
+            name: Joi.string().required().error(err => {
+                return {
+                    message: 'O nome é obrigatório'
+                }
+            }),
+            email: Joi.string().required().email().error(err => {
+                switch(err[0].type) {
+                    case 'any.required':
+                        return 'O e-mail é obrigatório'
+                    case 'string.email':
+                        return 'Favor preencher um e-mail válido'
+                    default:
+                        return 'O e-mail é obrigatório'
+                }
+            })
+        }
+    },
 }
 
 module.exports = {
