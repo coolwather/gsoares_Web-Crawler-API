@@ -51,6 +51,19 @@ class UserController {
             next(err)
         }
     }
+
+    static async updatePassword(req, res, next) {
+        const { password } = req.body
+        const userId = req.userId
+
+        try {
+            const updatedUser = await UserService.UpdatePassword(userId, password)
+
+            return res.status(200).json(updatedUser)
+        } catch(err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = UserController

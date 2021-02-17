@@ -10,5 +10,7 @@ router.post('/login', validation(UserValidation.login), UserController.login)
 router.post('/', auth, validation(UserValidation.createUser), UserController.createUser)
 // UPDATE USER
 router.put('/', auth, validation(UserValidation.updateUser), UserController.updateUser)
+// UPDATE USER PASSWORD
+router.patch('/change-password', auth, validation(UserValidation.updatePassword), UserController.updatePassword)
 
 module.exports = router

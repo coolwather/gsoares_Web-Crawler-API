@@ -65,6 +65,15 @@ const UserValidation = {
             })
         }
     },
+    updatePassword: {
+        body: {
+            password: Joi.string().required().error(err => {
+                return {
+                    message: 'A senha é obrigatória'
+                }
+            })
+        }
+    }
 }
 
 module.exports = {

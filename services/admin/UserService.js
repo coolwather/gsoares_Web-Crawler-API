@@ -65,6 +65,19 @@ class UserService {
 			throw { errorCode: '001', message: 'Usuário não encontrado' }
 		}
 	}
+
+	static async UpdatePassword(userId, password) {
+		const user = await User.findByPk(userId)
+
+		if(user) {
+			user.setPassword(password)
+			await user.save()
+
+			return user.getUser()
+		} else {
+			throw { errorCode: '001', message: 'Usuário não encontrado'}
+		}
+	}
 }
 
 module.exports = UserService
