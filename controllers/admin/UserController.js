@@ -1,15 +1,27 @@
 const UserService = require('../../services/admin/UserService')
 
 class UserController {
-    static async index(req, res, next) {
-        try {
-            const users = await UserService.GetUsers()
+	static async index(req, res, next) {
+		try {
+			const users = await UserService.GetUsers()
 
-            return res.status(200).send(users)
+			return res.status(200).send(users)
+		} catch (err) {
+			next(err)
+		}
+	}
+
+	static async getUser(req, res, next) {
+		const { id } = req.params
+
+        try {
+            const user = await UserService.GetUserById(id)
+
+            return res.status(200).send(user)
         } catch(err) {
             next(err)
         }
-    }
+	}
 
 	static async createUser(req, res, next) {
 		const { name, email, password } = req.body

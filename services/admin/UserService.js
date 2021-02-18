@@ -9,6 +9,16 @@ class UserService {
 		return usersToReturn
 	}
 
+	static async GetUserById(id) {
+		const user = await User.findByPk(id)
+
+		if(user) {
+			return user.getUser()
+		} else {
+			throw { errorCode: '001', message: 'Usuário não encontrado' }
+		}
+	}
+
 	static async EmailExists(email, oldEmail = null) {
 		if (oldEmail === null || email !== oldEmail) {
 			const user = await User.findOne({ where: { email } })

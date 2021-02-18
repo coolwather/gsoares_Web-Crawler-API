@@ -16,5 +16,6 @@ router.patch('/change-password', auth, validation(UserValidation.updatePassword)
 router.delete('/:id', auth, UserController.deleteUser)
 // GET ALL USERS
 router.get('/', auth, UserController.index)
+router.get('/:id', auth, UserController.getUser)
 
 module.exports = router
