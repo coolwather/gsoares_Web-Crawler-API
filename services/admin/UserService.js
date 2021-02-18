@@ -46,7 +46,7 @@ class UserService {
 	}
 
 	static async UpdateUser(id, name, email) {
-        const user = await User.findByPk(id)
+		const user = await User.findByPk(id)
 
 		if (user) {
 			if (user.email !== email) {
@@ -54,12 +54,12 @@ class UserService {
 					throw { errorCode: '002', message: 'E-mail já cadastrado' }
 				}
 
-                user.email = email
-                user.name = name
+				user.email = email
+				user.name = name
 
-                await user.save()
+				await user.save()
 
-                return user.getUser()
+				return user.getUser()
 			}
 		} else {
 			throw { errorCode: '001', message: 'Usuário não encontrado' }
@@ -69,13 +69,25 @@ class UserService {
 	static async UpdatePassword(userId, password) {
 		const user = await User.findByPk(userId)
 
-		if(user) {
+		if (user) {
 			user.setPassword(password)
 			await user.save()
 
 			return user.getUser()
 		} else {
-			throw { errorCode: '001', message: 'Usuário não encontrado'}
+			throw { errorCode: '001', message: 'Usuário não encontrado' }
+		}
+	}
+
+	static async Delete(id) {
+		const user = await User.findByPk(id)
+
+		if (user) {
+			await user.destroy()
+
+			return true
+		} else {
+			throw { errorCode: '001', message: 'Usuário nã encontrado' }
 		}
 	}
 }

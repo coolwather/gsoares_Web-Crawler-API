@@ -12,5 +12,7 @@ router.post('/', auth, validation(UserValidation.createUser), UserController.cre
 router.put('/', auth, validation(UserValidation.updateUser), UserController.updateUser)
 // UPDATE USER PASSWORD
 router.patch('/change-password', auth, validation(UserValidation.updatePassword), UserController.updatePassword)
+// DELETE USER BY ID
+router.delete('/:id', auth, UserController.deleteUser)
 
 module.exports = router
