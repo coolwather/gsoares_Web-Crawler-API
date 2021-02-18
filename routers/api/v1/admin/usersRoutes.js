@@ -14,5 +14,7 @@ router.put('/', auth, validation(UserValidation.updateUser), UserController.upda
 router.patch('/change-password', auth, validation(UserValidation.updatePassword), UserController.updatePassword)
 // DELETE USER BY ID
 router.delete('/:id', auth, UserController.deleteUser)
+// GET ALL USERS
+router.get('/', auth, UserController.index)
 
 module.exports = router

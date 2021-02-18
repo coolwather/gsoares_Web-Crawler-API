@@ -1,6 +1,14 @@
 const User = require('../../models/User')
 
 class UserService {
+	static async GetUsers() {
+		const users = await User.findAll({ order: [['name', 'ASC']] })
+
+		const usersToReturn = users.map((user) => user.getUser())
+
+		return usersToReturn
+	}
+
 	static async EmailExists(email, oldEmail = null) {
 		if (oldEmail === null || email !== oldEmail) {
 			const user = await User.findOne({ where: { email } })
