@@ -1,6 +1,13 @@
 const Site = require('../../models/Site')
 
 class SiteService {
+    static async GetAll() {
+        const sites = await Site.findAll({ order: [['name', 'ASC']]})
+        const sitesToReturn = sites.map(site => site.getSite())
+
+        return sitesToReturn
+    }
+
     static async create(name, url) {
         if(!await SiteService.SiteExists(url)) {
             const siteToCreate = Site.build({

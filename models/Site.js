@@ -3,7 +3,18 @@ const db = require('../config/database'),
 	sequelize = db.sequelize,
 	Sequelize = db.Sequelize
 
-class Site extends Model {}
+class Site extends Model {
+	getSite() {
+		return {
+			id: this.id,
+			code: this.identifier,
+			name: this.name,
+			url: this.url,
+			qtdHqs: this.qtdHqs,
+			updated: this.dateLastUpdate
+		}
+	}
+}
 
 Site.init(
 	{

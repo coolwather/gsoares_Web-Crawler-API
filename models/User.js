@@ -42,12 +42,10 @@ class User extends Model {
 
 	getUser() {
 		return {
-			user: {
-				id: this.id,
-				identifier: this.identifier,
-				name: this.name,
-				email: this.email,
-			},
+			id: this.id,
+			identifier: this.identifier,
+			name: this.name,
+			email: this.email,
 		}
 	}
 }
