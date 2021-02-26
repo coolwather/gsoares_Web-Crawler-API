@@ -8,6 +8,16 @@ class SiteService {
         return sitesToReturn
     }
 
+    static async GetSite(id) {
+        const site = await Site.findByPk(id)
+
+        if(site) {
+            return site.getSite()
+        } else {
+            throw {errorCode: 'SITE_002', message: 'Site não encontrado'}
+        }
+    }
+
     static async create(name, url) {
         if(!await SiteService.SiteExists(url)) {
             const siteToCreate = Site.build({

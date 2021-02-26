@@ -11,6 +11,18 @@ class SiteController {
         }
     }
 
+    static async getSite(req, res, next) {
+        const { id } = req.params
+
+        try {
+            const site = await SiteService.GetSite(id)
+        
+            return res.status(200).send(site)
+        } catch(err) {
+            next(err)
+        }
+    }
+
 	static async createSite(req, res, next) {
         const { name, url } = req.body
 

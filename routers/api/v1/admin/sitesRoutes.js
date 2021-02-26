@@ -6,6 +6,8 @@ const auth = require('../../../middleware/auth')
 
 // GET ALL SITES
 router.get('/', auth, SiteController.index)
+// GET A SITE BY ID
+router.get('/:id', auth, SiteController.getSite)
 // CREATE A NEW SITE
 router.post('/', auth, validation(SiteValidation.create), SiteController.createSite)
 
