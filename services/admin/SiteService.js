@@ -56,6 +56,18 @@ class SiteService {
 		}
 	}
 
+    static async Delete(id) {
+        const site = await Site.findByPk(id)
+
+        if(site) {
+            await site.destroy()
+
+            return true
+        } else {
+            throw { errorCode: 'SITE_002', message: 'Site não encontrado' }
+        }
+    }
+
 	static async SiteExists(url, oldUrl = null) {
 		if (oldUrl === null || url !== oldUrl) {
 			const site = await Site.findOne({ where: { url } })

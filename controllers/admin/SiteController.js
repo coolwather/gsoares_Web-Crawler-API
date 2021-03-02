@@ -47,6 +47,18 @@ class SiteController {
             next(err)
         }
     }
+
+    static async delete(req, res, next) {
+        const { id } = req.params
+
+        try {
+            await SiteService.Delete(id)
+
+            return res.status(200).json({ delete: true })
+        } catch(err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = SiteController

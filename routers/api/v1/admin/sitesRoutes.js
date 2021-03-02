@@ -12,5 +12,7 @@ router.get('/:id', auth, SiteController.getSite)
 router.post('/', auth, validation(SiteValidation.create), SiteController.createSite)
 // UPDATE A SITE BY ID
 router.patch('/:id', auth, validation(SiteValidation.update), SiteController.update)
+// DELETE SITE
+router.delete('/:id', auth, SiteController.delete)
 
 module.exports = router
