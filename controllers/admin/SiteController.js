@@ -27,10 +27,23 @@ class SiteController {
         const { name, url } = req.body
 
         try{
-            const site = await SiteService.create(name, url)
+            const site = await SiteService.Create(name, url)
 
             res.status(201).send(site)
         } catch(err) {
+            next(err)
+        }
+    }
+
+    static async update(req, res, next) {
+        const { name, url, qtdHqs } = req.body
+        const { id } = req.params
+
+        try {
+            const updatedSite = await SiteService.Update(name, url, qtdHqs, id)
+
+            res.status(200).send(updatedSite)
+        } catch(err){
             next(err)
         }
     }

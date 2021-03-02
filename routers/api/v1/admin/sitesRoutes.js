@@ -10,5 +10,7 @@ router.get('/', auth, SiteController.index)
 router.get('/:id', auth, SiteController.getSite)
 // CREATE A NEW SITE
 router.post('/', auth, validation(SiteValidation.create), SiteController.createSite)
+// UPDATE A SITE BY ID
+router.patch('/:id', auth, validation(SiteValidation.update), SiteController.update)
 
 module.exports = router
