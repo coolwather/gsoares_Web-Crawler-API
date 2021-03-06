@@ -7,8 +7,9 @@ const sequelize = new Sequelize(
     {
         host: process.env.DB_HOST,
         dialect: 'mysql',
-        benchmark: true,
-        logQueryParameters: true,
+        benchmark: false,
+        logging: false,
+        logQueryParameters: false,
         define: {
             freezeTableName: true
         },

@@ -55,6 +55,26 @@ Site.init(
             allowNull: true,
             defaultValue: 0
         },
+		qtdHqsDetailed: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0
+        },
+		qtdHqsDownloaded: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0
+        },
+		qtdHqsConverted: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0
+        },
+		qtdHqsUploaded: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0
+        },
         dateLastUpdate: {
             type: DataTypes.DATE,
             allowNull: true,

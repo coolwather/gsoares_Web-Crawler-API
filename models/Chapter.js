@@ -3,9 +3,9 @@ const db = require('../config/database'),
 	sequelize = db.sequelize,
 	Sequelize = db.Sequelize
 
-class Hq extends Model {}
+class Chapter extends Model {}
 
-Hq.init({
+Chapter.init({
     identifier: {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -17,7 +17,6 @@ Hq.init({
     url: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
             notEmpty: {
                 msg: 'A url da HQ é obrigatória'
@@ -30,32 +29,12 @@ Hq.init({
             },
         },
     },
-    coverUrl: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    editor: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    year: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    status: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
-    qtdHqs: {
+    qtdPages: {
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
-    dateUpdated: {
-        type: DataTypes.DATE,
+    cbzUrl: {
+        type: DataTypes.STRING,
         allowNull: true
     },
     detailed: {
@@ -73,12 +52,7 @@ Hq.init({
     uploaded: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
-    },
-    qtdHqs: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-    },
-
+    }
 }, { sequelize, paranoid: true })
 
-module.exports = Hq
+module.exports = Chapter

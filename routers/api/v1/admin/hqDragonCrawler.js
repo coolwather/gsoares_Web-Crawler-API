@@ -4,5 +4,7 @@ const HqDragonController = require('../../../../controllers/admin/HqragonControl
 
 // GET ALL HQS IN SITE
 router.get('/get-hqs', auth, HqDragonController.getHqs)
+// UPDATE HQ DETAIL
+router.get('/get-hq-detail/:numberOfHqs', auth, HqDragonController.UpdateHqDetail)
 
 module.exports = router
